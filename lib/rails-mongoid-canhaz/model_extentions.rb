@@ -41,6 +41,12 @@ module Rails
 
             embeds_many :permissions
 
+            class_name = self.class.to_s.singularize.to_sym
+
+            Permission.class_eval do
+              embedded_in class_name
+            end
+
           end
 
           ##
