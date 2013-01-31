@@ -1,6 +1,6 @@
+require 'rails-mongoid-canhaz/permission'
 require 'rails-mongoid-canhaz/object_extensions'
 require 'rails-mongoid-canhaz/subject_extensions'
-require 'rails-mongoid-canhaz/permission'
 
 module Rails
   module Mongoid
@@ -39,11 +39,11 @@ module Rails
           def acts_as_canhaz_subject
             include Rails::Mongoid::Canhaz::SubjectExtensions
 
-            embeds_many :permissions
+            embeds_many :permissions, :class_name => 'Rails::Mongoid::Canhaz::Permission'
 
             class_name = self.class.to_s.singularize.to_sym
 
-            Permission.class_eval do
+            Rails::Mongoid::Canhaz::Permission.class_eval do
               embedded_in class_name
             end
 

@@ -3,6 +3,7 @@ require 'mongoid'
 require 'rails-mongoid-canhaz'
 require 'models/test_object'
 require 'models/test_subject'
+require 'init_connection'
 
 class TestCanhaz < Test::Unit::TestCase
   def test_methods
@@ -19,6 +20,22 @@ class TestCanhaz < Test::Unit::TestCase
     assert_equal false, object.canhaz_subject?
     assert_equal false, subject.canhaz_object?
     assert_equal true, subject.canhaz_subject?
+  end
+
+
+  def test_can
+    object = TestObject.new
+    subject = TestSubject.new
+
+    object.save
+    subject.save
+
+    assert_equal 0, subject.permissions.size
+
+    subject.can!(:foo, object)
+
+    assert_equal 1, subject.permissions.size
 
   end
+
 end
