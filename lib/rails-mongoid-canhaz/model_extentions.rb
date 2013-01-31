@@ -1,5 +1,6 @@
 require 'rails-mongoid-canhaz/object_extensions'
 require 'rails-mongoid-canhaz/subject_extensions'
+require 'rails-mongoid-canhaz/permission'
 
 module Rails
   module Mongoid
@@ -37,6 +38,9 @@ module Rails
           #
           def acts_as_canhaz_subject
             include Rails::Mongoid::Canhaz::SubjectExtensions
+
+            embeds_many :permissions
+
           end
 
           ##
