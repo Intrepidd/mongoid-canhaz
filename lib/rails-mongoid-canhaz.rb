@@ -1,9 +1,6 @@
 require "rails-mongoid-canhaz/version"
+require "rails-mongoid-canhaz/model_extentions"
 
-module Rails
-  module Mongoid
-    module Canhaz
-      # Your code goes here...
-    end
-  end
+if defined? Mongoid::Document
+  Mongoid::Document.send(:include, Rails::Mongoid::Canhaz::ModelExtensions)
 end
