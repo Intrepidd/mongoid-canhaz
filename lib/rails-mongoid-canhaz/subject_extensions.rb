@@ -41,8 +41,18 @@ module Rails
           object_id = object.nil? ? nil : object.id.to_s
           self.permissions.select { |p| p.permission == permission.to_s && p.type == object_type && p.cobject_id == object_id}.any?
         end
-      end
 
+        # Checks if the subject does not have a given permission on a given object
+        # Acts as a proxy of !subject.can?(permission, object)
+        #
+        # @param permission [String, Symbol] The identifier of the permission
+        # @param object [ActiveRecord::Base] The model we are testing the permission on. Can be nil if it is a global permission that does not target an object
+        # @return [Bool] True if the user has not the given permission, false otherwise
+        def cannot?(permission, object = nil)
+          !self.can?(permission, object)
+        end
+
+      end
     end
   end
 end
