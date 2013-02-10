@@ -1,6 +1,16 @@
 require "rails-mongoid-canhaz/version"
 require "rails-mongoid-canhaz/model_extentions"
 
-if defined? Mongoid::Document
-  Mongoid::Document.send(:include, Rails::Mongoid::Canhaz::ModelExtensions)
+module Rails
+  module Mongoid
+    module Canhaz
+      module Document
+
+        def self.included(base)
+          base.send(:include, Rails::Mongoid::Canhaz::ModelExtensions)
+        end
+
+      end
+    end
+  end
 end

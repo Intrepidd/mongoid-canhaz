@@ -9,18 +9,7 @@ module Rails
       module ModelExtensions
 
         def self.included(base)
-          base.class_eval do
-
-            class << self
-              alias_method :old_included, :included
-
-              def included(base)
-                old_included(base)
-                base.send(:extend, ClassMethods)
-              end
-            end
-
-          end
+          base.send(:extend, ClassMethods)
         end
 
         def canhaz_object?
