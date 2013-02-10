@@ -46,6 +46,10 @@ class TestCanhaz < Test::Unit::TestCase
       subject.can!(:foo, 1)
     end
 
+    assert_equal true, subject.cannot!(:foo, object)
+    assert_equal 0, subject.permissions.size
+    assert_equal false, subject.can?(:foo, object)
+
   end
 
 end
