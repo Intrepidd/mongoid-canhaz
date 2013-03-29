@@ -5,7 +5,7 @@ require 'rails-mongoid-canhaz/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "rails-mongoid-canhaz"
-  gem.version       = Rails::Mongoid::Canhaz::VERSION
+  gem.version       = Canhaz::Mongoid::VERSION
   gem.authors       = ["Intrepidd"]
   gem.email         = ["adrien@siami.fr"]
   gem.description   = %q{TODO: Write a gem description}

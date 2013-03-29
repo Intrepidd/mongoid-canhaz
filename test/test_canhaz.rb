@@ -42,7 +42,7 @@ class TestCanhaz < Test::Unit::TestCase
     assert_equal false, subject.can!(:foo, object)
     assert_equal 1, subject.permissions.size
 
-    assert_raise Rails::Mongoid::Canhaz::Exceptions::NotACanHazObject do
+    assert_raise Canhaz::Mongoid::Exceptions::NotACanHazObject do
       subject.can!(:foo, 1)
     end
 

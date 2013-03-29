@@ -1,7 +1,5 @@
-module Rails
+module Canhaz
   module Mongoid
-    module Canhaz
-      VERSION = "0.0.1"
-    end
+    VERSION = "0.0.1"
   end
 end

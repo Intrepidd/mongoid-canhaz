@@ -1,13 +1,9 @@
-module Rails
+module Canhaz
   module Mongoid
-    module Canhaz
+    module ObjectExtensions
 
-      module ObjectExtensions
-
-        def canhaz_object?
-          true
-        end
-
+      def canhaz_object?
+        true
       end
 
     end

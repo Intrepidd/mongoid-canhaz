@@ -1,6 +1,6 @@
 class TestSubject
   include Mongoid::Document
-  include Rails::Mongoid::Canhaz::Document
+  include Canhaz::Mongoid::Document
 
   acts_as_canhaz_subject
 
