@@ -62,8 +62,30 @@ class TestCanhaz < Test::Unit::TestCase
 
     assert_equal false, subject.can?(:bar)
     assert_equal true, subject.cannot?(:bar)
+  end
 
+  def test_objects_with_permission
+    subject = TestSubject.new
 
+    o1 = TestObject.new
+    o2 = TestObject.new
+    o3 = TestObject.new
+
+    subject.save
+    o1.save
+    o2.save
+    o3.save
+
+    assert_equal [], subject.objects_with_permission(TestObject, :foo)
+
+    subject.can!(:foo, o1)
+    assert_equal [o1], subject.objects_with_permission(TestObject, :foo)
+
+    subject.can!(:bar, o2)
+    assert_equal [o1], subject.objects_with_permission(TestObject, :foo)
+
+    subject.can!(:foo, o3)
+    assert_equal [o1, o3], subject.objects_with_permission(TestObject, :foo)
   end
 
 end

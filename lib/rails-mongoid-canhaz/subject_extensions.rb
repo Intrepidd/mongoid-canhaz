@@ -64,6 +64,17 @@ module Canhaz
         row.destroy and return true
       end
 
+      # Gets All objects that match a given type and permission
+      #
+      # @param type [Class] The type of the objects
+      # @param permission [String, Symbol] The name of the permission
+      # @return The macthing objects in an array
+      def objects_with_permission(type, permission)
+        raise Exceptions::NotACanHazObject unless type.respond_to?(:acts_as_canhaz_object)
+        permissions = self.permissions.where(:permission => permission.to_s, :type => type.to_s)
+        type.in(:id => permissions.collect(&:cobject_id)).to_a
+      end
+
       private
 
       def assert_canhaz_object(object)
