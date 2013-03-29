@@ -86,6 +86,10 @@ class TestCanhaz < Test::Unit::TestCase
 
     subject.can!(:foo, o3)
     assert_equal [o1, o3], subject.objects_with_permission(TestObject, :foo)
+
+    assert_raise Canhaz::Mongoid::Exceptions::NotACanHazObject do
+        subject.objects_with_permission(Fixnum, :foo)
+    end
   end
 
 end
