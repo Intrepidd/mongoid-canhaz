@@ -12,7 +12,7 @@ module Canhaz
       # Creates a permission on a given object
       #
       # @param permission [String, Symbol] The identifier of the permission
-      # @param object [ActiveRecord::Base, nil] The model on which the permission is effective
+      # @param object [Object, nil] The model on which the permission is effective
       #   Can be nil if it is a global permission that does not target an object
       # @return [Bool] True if the role was successfully created, false if it was already present
       def can!(permission, object = nil)
@@ -32,7 +32,7 @@ module Canhaz
       # Checks if the subject has a given permission on a given object
       #
       # @param permission [String, Symbol] The identifier of the permission
-      # @param object [ActiveRecord::Base, nil] The model we are testing the permission on
+      # @param object [Object, nil] The model we are testing the permission on
       #  Can be nil if it is a global permission that does not target an object
       # @return [Bool] True if the user has the given permission, false otherwise
       def can?(permission, object = nil)
@@ -45,7 +45,7 @@ module Canhaz
       # Acts as a proxy of !subject.can?(permission, object)
       #
       # @param permission [String, Symbol] The identifier of the permission
-      # @param object [ActiveRecord::Base] The model we are testing the permission on. Can be nil if it is a global permission that does not target an object
+      # @param object [Object] The model we are testing the permission on. Can be nil if it is a global permission that does not target an object
       # @return [Bool] True if the user has not the given permission, false otherwise
       def cannot?(permission, object = nil)
         !self.can?(permission, object)
@@ -54,7 +54,7 @@ module Canhaz
       # Removes a permission on a given object
       #
       # @param permission [String, Symbol] The identifier of the permission
-      # @param object [ActiveRecord::Base, nil] The model on which the permission is effective. Can be nil if it is a global permission that does not target an object
+      # @param object [Object, nil] The model on which the permission is effective. Can be nil if it is a global permission that does not target an object
       # @return [Bool] True if the role was successfully removed, false if it did not exist
       def cannot!(permission, object = nil)
         assert_canhaz_object(object)
