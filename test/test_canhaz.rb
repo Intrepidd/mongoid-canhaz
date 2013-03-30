@@ -36,11 +36,13 @@ class TestCanhaz < Test::Unit::TestCase
 
     assert_equal true, subject.can!(:foo, object)
     assert_equal 1, subject.permissions.size
+    assert_equal 1, subject.reload.permissions.size
     assert_equal true, subject.can?(:foo, object)
     assert_equal false, subject.cannot?(:foo, object)
 
     assert_equal false, subject.can!(:foo, object)
     assert_equal 1, subject.permissions.size
+    assert_equal 1, subject.reload.permissions.size
 
     assert_raise Canhaz::Mongoid::Exceptions::NotACanHazObject do
       subject.can!(:foo, 1)
@@ -48,6 +50,7 @@ class TestCanhaz < Test::Unit::TestCase
 
     assert_equal true, subject.cannot!(:foo, object)
     assert_equal 0, subject.permissions.size
+    assert_equal 0, subject.reload.permissions.size
     assert_equal false, subject.can?(:foo, object)
 
     assert_equal false, subject.can?(:bar)
@@ -80,12 +83,15 @@ class TestCanhaz < Test::Unit::TestCase
 
     subject.can!(:foo, o1)
     assert_equal [o1], subject.objects_with_permission(TestObject, :foo)
+    assert_equal [o1], subject.reload.objects_with_permission(TestObject, :foo)
 
     subject.can!(:bar, o2)
     assert_equal [o1], subject.objects_with_permission(TestObject, :foo)
+    assert_equal [o1], subject.reload.objects_with_permission(TestObject, :foo)
 
     subject.can!(:foo, o3)
     assert_equal [o1, o3], subject.objects_with_permission(TestObject, :foo)
+    assert_equal [o1, o3], subject.reload.objects_with_permission(TestObject, :foo)
 
     assert_raise Canhaz::Mongoid::Exceptions::NotACanHazObject do
         subject.objects_with_permission(Fixnum, :foo)

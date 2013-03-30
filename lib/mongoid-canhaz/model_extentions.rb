@@ -26,15 +26,7 @@ module Canhaz
         #
         def acts_as_canhaz_subject
           include Canhaz::Mongoid::SubjectExtensions
-
-          embeds_many :permissions, :class_name => 'Canhaz::Mongoid::Permission'
-
-          class_name = self.class.to_s.singularize.to_sym
-
-          Canhaz::Mongoid::Permission.class_eval do
-            embedded_in class_name
-          end
-
+          has_many :permissions, :class_name => 'Canhaz::Mongoid::Permission', :inverse_of => 'csubject'
         end
 
         ##

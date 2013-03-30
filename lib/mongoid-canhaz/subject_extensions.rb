@@ -25,6 +25,7 @@ module Canhaz
           perm.save
           return true
         end
+        self.permissions.delete perm
         perm.destroy
         false
       end
@@ -61,6 +62,7 @@ module Canhaz
         assert_permission_not_nil(permission)
         row = find_canhaz_permission(object, permission)
         return false unless row.present?
+        self.permissions.delete row
         row.destroy and return true
       end
 

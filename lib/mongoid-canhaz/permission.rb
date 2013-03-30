@@ -7,6 +7,7 @@ module Canhaz
       include ::Mongoid::Document
 
       field :type, :type => String
+      field :csubject_id, :type => String
       field :cobject_id, :type => String
       field :permission, :type => String
 
