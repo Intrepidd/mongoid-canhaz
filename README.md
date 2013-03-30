@@ -1,7 +1,7 @@
 mongoid-canhaz
 ====================
 
-A mongoid port of the permissions gem for active record : rails-canhaz
+A mongoid port of the permissions gem for active record : [rails-canhaz](https://github.com/Intrepidd/rails-canhaz)
 
 This gem is a simple mongoid extention that allows any application using mongoid to manage permissions based roles.
 
