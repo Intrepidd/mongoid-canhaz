@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = Canhaz::Mongoid::VERSION
   gem.authors       = ["Intrepidd"]
   gem.email         = ["adrien@siami.fr"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = "A simple mongoid extention that allows any application using mongoid to manage permissions based roles."
+  gem.summary       = "A simple mongoid extention that allows any application using mongoid to manage permissions based roles."
+  gem.homepage      = "https://github.com/Intrepidd/mongoid-canhaz/"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
