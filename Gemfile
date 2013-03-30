@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rails-mongoid-canhaz.gemspec
+# Specify your gem's dependencies in mongoid-canhaz.gemspec
 gemspec

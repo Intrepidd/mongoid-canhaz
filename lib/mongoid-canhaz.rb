@@ -1,5 +1,5 @@
-require "rails-mongoid-canhaz/version"
-require "rails-mongoid-canhaz/model_extentions"
+require "mongoid-canhaz/version"
+require "mongoid-canhaz/model_extentions"
 
 module Canhaz
   module Mongoid

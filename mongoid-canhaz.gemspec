@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rails-mongoid-canhaz/version'
+require 'mongoid-canhaz/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "rails-mongoid-canhaz"
+  gem.name          = "mongoid-canhaz"
   gem.version       = Canhaz::Mongoid::VERSION
   gem.authors       = ["Intrepidd"]
   gem.email         = ["adrien@siami.fr"]

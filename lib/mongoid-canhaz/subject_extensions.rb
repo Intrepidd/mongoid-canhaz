@@ -1,4 +1,4 @@
-require 'rails-mongoid-canhaz/exceptions'
+require 'mongoid-canhaz/exceptions'
 
 module Canhaz
   module Mongoid

@@ -1,6 +1,6 @@
-require 'rails-mongoid-canhaz/permission'
-require 'rails-mongoid-canhaz/object_extensions'
-require 'rails-mongoid-canhaz/subject_extensions'
+require 'mongoid-canhaz/permission'
+require 'mongoid-canhaz/object_extensions'
+require 'mongoid-canhaz/subject_extensions'
 
 module Canhaz
   module Mongoid

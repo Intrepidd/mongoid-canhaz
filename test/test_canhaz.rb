@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'mongoid'
-require 'rails-mongoid-canhaz'
+require 'mongoid-canhaz'
 require 'models/test_object'
 require 'models/test_subject'
 require 'init_connection'

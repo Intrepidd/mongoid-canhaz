@@ -1,2 +1,2 @@
-::Mongoid.connect_to('rails-mongoid-canhaz')
+::Mongoid.connect_to('mongoid-canhaz')
 ::Mongoid::Sessions.default.drop
