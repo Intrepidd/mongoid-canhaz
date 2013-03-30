@@ -34,6 +34,9 @@ module Canhaz
         #
         def acts_as_canhaz_object
           include Canhaz::Mongoid::ObjectExtensions
+          class_eval do
+            has_many :permissions_subjects, :class_name => 'Canhaz::Mongoid::Permission', :inverse_of => 'cobject'
+          end
         end
 
       end

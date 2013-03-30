@@ -74,7 +74,7 @@ module Canhaz
       def objects_with_permission(type, permission)
         raise Exceptions::NotACanHazObject unless type.respond_to?(:acts_as_canhaz_object)
         permissions = self.permissions.where(:permission => permission.to_s, :type => type.to_s)
-        type.in(:id => permissions.collect(&:cobject_id)).to_a
+        type.in(:id => permissions.collect(&:cobject_id))
       end
 
       private

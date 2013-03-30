@@ -79,22 +79,52 @@ class TestCanhaz < Test::Unit::TestCase
     o2.save
     o3.save
 
-    assert_equal [], subject.objects_with_permission(TestObject, :foo)
+    assert_equal [], subject.objects_with_permission(TestObject, :foo).to_a
 
     subject.can!(:foo, o1)
-    assert_equal [o1], subject.objects_with_permission(TestObject, :foo)
-    assert_equal [o1], subject.reload.objects_with_permission(TestObject, :foo)
+    assert_equal [o1], subject.objects_with_permission(TestObject, :foo).to_a
+    assert_equal [o1], subject.reload.objects_with_permission(TestObject, :foo).to_a
 
     subject.can!(:bar, o2)
-    assert_equal [o1], subject.objects_with_permission(TestObject, :foo)
-    assert_equal [o1], subject.reload.objects_with_permission(TestObject, :foo)
+    assert_equal [o1], subject.objects_with_permission(TestObject, :foo).to_a
+    assert_equal [o1], subject.reload.objects_with_permission(TestObject, :foo).to_a
 
     subject.can!(:foo, o3)
-    assert_equal [o1, o3], subject.objects_with_permission(TestObject, :foo)
-    assert_equal [o1, o3], subject.reload.objects_with_permission(TestObject, :foo)
+    assert_equal [o1, o3], subject.objects_with_permission(TestObject, :foo).to_a
+    assert_equal [o1, o3], subject.reload.objects_with_permission(TestObject, :foo).to_a
 
     assert_raise Canhaz::Mongoid::Exceptions::NotACanHazObject do
         subject.objects_with_permission(Fixnum, :foo)
+    end
+  end
+
+  def test_subjects_with_permission
+    object = TestObject.new
+    s1 = TestSubject.new
+    s2 = TestSubject.new
+    s3 = TestSubject.new
+
+    object.save
+    s1.save
+    s2.save
+    s3.save
+
+    assert_equal [], object.subjects_with_permission(TestSubject, :foo).to_a
+
+    assert_equal true, s1.can!(:foo, object)
+    assert_equal [s1], object.subjects_with_permission(TestSubject, :foo).to_a
+    assert_equal [s1], object.reload.subjects_with_permission(TestSubject, :foo).to_a
+
+    assert_equal true, s2.can!(:bar, object)
+    assert_equal [s1], object.subjects_with_permission(TestSubject, :foo).to_a
+    assert_equal [s1], object.reload.subjects_with_permission(TestSubject, :foo).to_a
+
+    assert_equal true, s3.can!(:foo, object)
+    assert_equal [s1, s3], object.subjects_with_permission(TestSubject, :foo).to_a
+    assert_equal [s1, s3], object.reload.subjects_with_permission(TestSubject, :foo).to_a
+
+    assert_raise Canhaz::Mongoid::Exceptions::NotACanHazSubject do
+        object.subjects_with_permission(Fixnum, :foo)
     end
   end
 

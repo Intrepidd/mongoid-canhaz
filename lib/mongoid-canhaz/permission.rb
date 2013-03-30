@@ -11,7 +11,7 @@ module Canhaz
       field :cobject_id, :type => String
       field :permission, :type => String
 
-      validates :permission, :presence => true, :uniqueness => {:scope => [:type, :cobject_id]}
+      validates :permission, :presence => true, :uniqueness => {:scope => [:type, :cobject_id, :csubject_id]}
     end
 
   end
