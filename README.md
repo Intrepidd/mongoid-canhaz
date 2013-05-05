@@ -1,4 +1,4 @@
-mongoid-canhaz
+mongoid-canhaz [![Build Status](https://travis-ci.org/Intrepidd/mongoid-canhaz.png?branch=master)](https://travis-ci.org/Intrepidd/mongoid-canhaz)
 ====================
 
 A mongoid port of the permissions gem for active record : [rails-canhaz](https://github.com/Intrepidd/rails-canhaz)
